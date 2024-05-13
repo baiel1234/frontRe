@@ -1,13 +1,14 @@
 import React, { useState } from 'react'; 
 import ReactDOM from 'react-dom'; 
+import './App.css';
  
-const Header = () => { 
-  return ( 
-    <div style={{ backgroundColor: '#007bff', color: '#fff', padding: '20px', textAlign: 'left' }}> 
-      <h1 style={{ margin: 0 }}>HOBBYS</h1> 
-    </div> 
-  ); 
-}; 
+const Header = () => {
+  return (
+    <div className="header">
+      <h1>HOBBYS</h1>
+    </div>
+  );
+};
  
 const Login = ({ onSubmit, onToggleSignUp }) => {
   const [username, setUsername] = useState('');
@@ -19,19 +20,19 @@ const Login = ({ onSubmit, onToggleSignUp }) => {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '20px', padding: '30px', backgroundColor: '#f9f9f9', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
-      <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Login</h2>
+    <div className="form-container">
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '20px' }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>Username:</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #ccc' }} />
+        <div>
+          <label>Username:</label>
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="form-input" />
         </div>
-        <div style={{ marginBottom: '20px' }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #ccc' }} />
+        <div>
+          <label>Password:</label>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-input" />
         </div>
-        <button type="submit" style={{ backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', padding: '10px 20px', cursor: 'pointer' }}>Log In</button>
-        <button onClick={onToggleSignUp} style={{ backgroundColor: 'transparent', color: '#007bff', border: 'none', cursor: 'pointer', marginLeft: '10px' }}>Sign Up</button>
+        <button type="submit" className="btn">Log In</button>
+        <button onClick={onToggleSignUp} className="btn btn-transparent">Sign Up</button>
       </form>
     </div>
   );
@@ -49,23 +50,23 @@ const SignUp = ({ onSubmit, onToggleLogin }) => {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '20px', padding: '20px', backgroundColor: '#f9f9f9', borderRadius: '8px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+    <div className="sign-up-container">
       <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '20px' }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>Email:</label>
-          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #ccc' }} />
+        <div>
+          <label className="form-label">Email:</label>
+          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="form-input" />
         </div>
-        <div style={{ marginBottom: '20px' }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>Username:</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #ccc' }} />
+        <div>
+          <label className="form-label">Username:</label>
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="form-input" />
         </div>
-        <div style={{ marginBottom: '20px' }}>
-          <label style={{ display: 'block', marginBottom: '5px' }}>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ width: '100%', padding: '6px', borderRadius: '4px', border: '1px solid #ccc' }} />
+        <div>
+          <label className="form-label">Password:</label>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-input" />
         </div>
-        <button type="submit" style={{ backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', padding: '10px 20px', cursor: 'pointer' }}>Sign Up</button>
-        <button onClick={onToggleLogin} style={{ backgroundColor: 'transparent', color: '#007bff', border: 'none', cursor: 'pointer', marginRight: '10px' }}>Log In</button>
+        <button type="submit" className="btn">Sign Up</button>
+        <button onClick={onToggleLogin} className="btn btn-transparent">Log In</button>
       </form>
     </div>
   );
@@ -95,7 +96,7 @@ const App = () => {
     setIsLogin(!isLogin); // Toggles between login and sign up forms
   };
   return (
-    <div style={{ backgroundColor: '#add8e6', minHeight: '100vh' }}>
+    <div className="main-container">
       <Header />
       {isLogin ? <Login onSubmit={handleLogin} onToggleSignUp={handleToggleSignUp} /> : <SignUp onSubmit={handleSignUp} onToggleLogin={handleToggleLogin} />}
     </div>

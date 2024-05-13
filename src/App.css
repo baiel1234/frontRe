@@ -48,3 +48,87 @@
   margin: 0 auto; 
   width: 300px; 
 }
+
+/* App.css */
+
+/* Styles for the header */
+.header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 20px;
+  text-align: left;
+}
+
+/* Styles for the form container */
+.form-container {
+  max-width: 400px;
+  margin: 20px;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for form inputs */
+.form-input {
+  width: 100%;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+/* Styles for buttons */
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn-transparent {
+  background-color: transparent;
+}
+
+.sign-up-container {
+  max-width: 400px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for form elements */
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.main-container {
+  background-color: #add8e6;
+  min-height: 100vh;
+}
+.btn-login {
+  background-color: #28a745; /* Green color for login button */
+}
+
+.btn-signup {
+  background-color: #dc3545; /* Red color for signup button */
+}
+.btn-transparent {
+  background-color: transparent !important; /* Ensure that this rule takes precedence */
+  color: #007bff; /* Color for the text */
+  border: 1px solid #007bff; /* Border color */
+}
