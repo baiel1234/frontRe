@@ -1,6 +1,7 @@
 import React, { useState } from 'react'; 
 import ReactDOM from 'react-dom'; 
 import './App.css';
+import ProfilePage from './ProfilePage';
  
 const Header = () => {
   return (
@@ -95,10 +96,25 @@ const App = () => {
   const handleToggleLogin = () => {
     setIsLogin(!isLogin); // Toggles between login and sign up forms
   };
+  const handleProfileClick = () => {
+    // Navigate to ProfilePage
+    ReactDOM.render(<ProfilePage />, document.getElementById('root'));
+  };
+
   return (
     <div className="main-container">
       <Header />
-      {isLogin ? <Login onSubmit={handleLogin} onToggleSignUp={handleToggleSignUp} /> : <SignUp onSubmit={handleSignUp} onToggleLogin={handleToggleLogin} />}
+      {isLogin ? (
+        <>
+          <Login onSubmit={handleLogin} onToggleSignUp={handleToggleSignUp} />
+          <button onClick={handleProfileClick}>Go to Profile</button>
+        </>
+      ) : (
+        <>
+          <SignUp onSubmit={handleSignUp} onToggleLogin={handleToggleLogin} />
+          <button onClick={handleProfileClick}>Go to Profile</button>
+        </>
+      )}
     </div>
   );
 };

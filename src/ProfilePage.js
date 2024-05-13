@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './ProfilePage.css'; // Import CSS file
 
 const ProfilePage = () => {
   // Define state variables for user information
@@ -14,7 +15,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div>
+    <div className="profile-container">
       <h2>Profile</h2>
       <form onSubmit={handleSubmit}>
         <div>
