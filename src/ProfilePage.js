@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './ProfilePage.css'; // Import CSS file
+import ReactDOM from 'react-dom'; 
+import ChatComponent from './ChatComponent';
 
-const ProfilePage = () => {
+
+const ProfilePage = ({ history }) => {
   // Define state variables for user information
   const [name, setName] = useState('John Doe');
   const [email, setEmail] = useState('john.doe@example.com');
@@ -12,6 +15,12 @@ const ProfilePage = () => {
     e.preventDefault();
     // Implement logic to update user information
     console.log('User information updated:', { name, email, bio });
+  };
+
+  // Function to navigate to chat page
+  const handleChatButtonClick = () => {
+    // Navigate to chat page
+    ReactDOM.render(<ChatComponent />, document.getElementById('root'));
   };
 
   return (
@@ -43,6 +52,8 @@ const ProfilePage = () => {
         </div>
         <button type="submit">Save</button>
       </form>
+      {/* Button to navigate to chat page */}
+      <button onClick={handleChatButtonClick}>Go to Chat</button>
     </div>
   );
 };
