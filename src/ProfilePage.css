@@ -1,11 +1,16 @@
+body{
+  background: #add8e6;
+}
 .profile-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9; /* Light gray background color */
-  }
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9; /* Light gray background color */
+  min-height: 00px; /* Пример минимальной высоты */
+}
+
   
   .profile-container h2 {
     color: #333; /* Dark text color */
@@ -24,6 +29,7 @@
   
   .profile-container input,
   .profile-container textarea {
+    width: 388px;
     padding: 8px;
     margin-bottom: 16px;
     border: 1px solid #ccc; /* Light gray border */
@@ -31,6 +37,8 @@
   }
   
   .profile-container button {
+    width: 115px;
+    margin: 10px;
     padding: 10px 20px;
     background-color: #007bff; /* Blue button color */
     color: #fff; /* White text color */
