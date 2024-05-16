@@ -16,7 +16,7 @@ const ProfilePage = ({ history }) => {
     // Implement logic to update user information
     console.log('User information updated:', { name, email, bio });
   };
-
+  
   // Function to navigate to chat page
   const handleChatButtonClick = () => {
     // Navigate to chat page

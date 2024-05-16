@@ -132,3 +132,31 @@
   color: #007bff; /* Color for the text */
   border: 1px solid #007bff; /* Border color */
 }
+
+.formContainer {
+  background-color: #61dafb;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .formWrapper {
+    background-color: white;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+    .logo {
+      color: #61dafb;
+      font-weight: bold;
+      font-size: 24px;
+
+    }
+
+    .title {
+      color: #61dafb;
+      font-size: 12px;
+    }

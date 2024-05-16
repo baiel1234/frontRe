@@ -51,3 +51,9 @@ body{
     background-color: #0056b3; /* Darker blue on hover */
   }
   
+  .header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: left;
+  }
