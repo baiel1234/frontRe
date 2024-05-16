@@ -1,65 +1,49 @@
-.App { 
-  text-align: center; 
-} 
- 
-.App-logo { 
-  height: 40vmin; 
-  pointer-events: none; 
-} 
- 
-@media (prefers-reduced-motion: no-preference) { 
-  .App-logo { 
-    animation: App-logo-spin infinite 20s linear; 
-  } 
-} 
- 
-.App-header { 
-  background-color: #282c34; 
-  min-height: 100vh; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  font-size: calc(10px + 2vmin); 
-  color: white; 
-} 
- 
-.App-link { 
-  color: #61dafb; 
-} 
- 
-@keyframes App-logo-spin { 
-  from { 
-    transform: rotate(0deg); 
-  } 
-  to { 
-    transform: rotate(360deg); 
-  } 
-} 
- 
-.header { 
-  background-color: #007bff; 
-  color: #fff; 
-  padding: 20px; 
-  text-align: center; 
-} 
- 
-.container { 
-  margin: 0 auto; 
-  width: 300px; 
+.App {
+  text-align: center;
 }
 
-/* App.css */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
 
-/* Styles for the header */
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .header {
-  background-color: #007bff;
+  background: linear-gradient(#69C6FB,#0390DF);;
   color: #fff;
   padding: 20px;
   text-align: left;
 }
 
-/* Styles for the form container */
 .form-container {
   max-width: 400px;
   margin: 20px;
@@ -69,7 +53,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Styles for form inputs */
 .form-input {
   width: 100%;
   padding: 6px;
@@ -78,7 +61,6 @@
   margin-bottom: 20px;
 }
 
-/* Styles for buttons */
 .btn {
   background-color: #007bff;
   color: #fff;
@@ -102,7 +84,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Styles for form elements */
 .form-label {
   display: block;
   margin-bottom: 5px;
@@ -120,15 +101,36 @@
   background-color: #add8e6;
   min-height: 100vh;
 }
+
 .btn-login {
-  background-color: #28a745; /* Green color for login button */
+  background-color: #28a745;
 }
 
 .btn-signup {
-  background-color: #dc3545; /* Red color for signup button */
+  background-color: #dc3545;
 }
+
 .btn-transparent {
-  background-color: transparent !important; /* Ensure that this rule takes precedence */
-  color: #007bff; /* Color for the text */
-  border: 1px solid #007bff; /* Border color */
+  background-color: transparent !important;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+textarea {
+  height: 70px;
+}
+
+/* Правильное размещение формы регистрации справа */
+.form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.form-container {
+  width: 45%; /* Ширина формы входа */
+}
+
+.sign-up-container {
+  width: 45%; /* Ширина формы регистрации */
 }
