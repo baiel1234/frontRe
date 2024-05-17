@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './chat.css';
 
 const ChatComponent = () => {
   const [chats, setChats] = useState([
@@ -9,70 +10,87 @@ const ChatComponent = () => {
 
   const [selectedChat, setSelectedChat] = useState(null);
   const [inputMessage, setInputMessage] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleChatSelection = (chat) => {
     setSelectedChat(chat);
   };
 
   const handleSendMessage = () => {
-    if (inputMessage.trim() !== '') {
-      // Create a new message object
+    if (inputMessage.trim() !== '' && selectedChat) {
       const newMessage = {
         id: selectedChat.messages.length + 1,
-        sender: 'You', // For simplicity, assuming the sender is always the current user
+        sender: 'You',
         text: inputMessage.trim(),
+        timestamp: new Date().toLocaleTimeString(),
       };
 
-      // Update the messages state of the selected chat with the new message
-      setSelectedChat({
-        ...selectedChat,
-        messages: [...selectedChat.messages, newMessage],
-      });
+      const updatedChats = chats.map(chat =>
+        chat.id === selectedChat.id
+          ? { ...chat, messages: [...chat.messages, newMessage] }
+          : chat
+      );
 
-      // Clear the input field
+      setChats(updatedChats);
+      setSelectedChat({ ...selectedChat, messages: [...selectedChat.messages, newMessage] });
       setInputMessage('');
     }
   };
 
+  const filteredChats = chats.filter(chat =>
+    chat.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="chat-container" style={{ backgroundColor: '#E6F2FF', display: 'flex' }}>
-      {/* Left Sidebar with Chats */}
-      <div className="sidebar" style={{ backgroundColor: '#3B5998', color: '#FFFFFF', padding: '20px' }}>
+    <div className="chat-container">
+      <div className="sidebar">
         <h3>Chats</h3>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          {chats.map(chat => (
-            <li key={chat.id} onClick={() => handleChatSelection(chat)} style={{ cursor: 'pointer', marginBottom: '10px' }}>
+        <input
+          type="text"
+          placeholder="Search chats..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-bar"
+        />
+        <ul className="chat-list">
+          {filteredChats.map(chat => (
+            <li
+              key={chat.id}
+              onClick={() => handleChatSelection(chat)}
+              className={selectedChat && selectedChat.id === chat.id ? 'selected-chat-item' : 'chat-item'}
+            >
               {chat.name}
             </li>
           ))}
         </ul>
       </div>
-      {/* Main Content Area for Chat */}
-      <div className="main-content" style={{ flex: 1, padding: '20px' }}>
-        {selectedChat && (
+      <div className="main-content">
+        {selectedChat ? (
           <>
-            <div className="header" style={{ backgroundColor: '#3B5998', color: '#FFFFFF', padding: '10px', marginBottom: '20px' }}>
+            <div className="header">
               {selectedChat.name}
             </div>
-            <div className="messages-container" style={{ maxHeight: '300px', overflowY: 'auto' }}>
-              {/* Render the list of messages */}
+            <div className="messages-container">
               {selectedChat.messages.map((message, index) => (
-                <div key={index} className="message" style={{ marginBottom: '10px' }}>
+                <div key={index} className="message">
                   <strong>{message.sender}:</strong> {message.text}
+                  <span className="timestamp">{message.timestamp}</span>
                 </div>
               ))}
             </div>
-            {/* Input field to type messages */}
-            <input
-              type="text"
-              placeholder="Type your message..."
-              value={inputMessage}
-              onChange={e => setInputMessage(e.target.value)}
-              style={{ marginTop: '20px', padding: '10px', width: '100%', borderRadius: '5px', border: '1px solid #3B5998' }}
-            />
-            {/* Button to send messages */}
-            <button onClick={handleSendMessage} style={{ marginTop: '10px', padding: '10px 20px', backgroundColor: '#3B5998', color: '#FFFFFF', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Send</button>
+            <div className="input-container">
+              <input
+                type="text"
+                placeholder="Type your message..."
+                value={inputMessage}
+                onChange={e => setInputMessage(e.target.value)}
+                className="input-field"
+              />
+              <button onClick={handleSendMessage} className="send-button">Send</button>
+            </div>
           </>
+        ) : (
+          <div className="no-chat-selected">Select a chat to start messaging</div>
         )}
       </div>
     </div>

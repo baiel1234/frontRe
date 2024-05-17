@@ -19,6 +19,11 @@ const Login = ({ onSubmit, onToggleSignUp }) => {
     e.preventDefault();
     onSubmit({ username, password });
   };
+  const handleProfileClick = () => {
+    // Navigate to ProfilePage
+    ReactDOM.render(<ProfilePage />, document.getElementById('root'));
+  };
+  const isFormValid = username && password;
 
   return (
     <div className="form-container">
@@ -26,13 +31,13 @@ const Login = ({ onSubmit, onToggleSignUp }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="form-input" />
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="form-input" required />
         </div>
         <div>
           <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-input" />
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-input" required />
         </div>
-        <button type="submit" className="btn">Log In</button>
+        <button type="submit" disabled={!isFormValid} onClick={handleProfileClick} className="btn">Log In</button>
         <button onClick={onToggleSignUp} className="btn btn-transparent">Sign Up</button>
       </form>
     </div>
@@ -49,6 +54,11 @@ const SignUp = ({ onSubmit, onToggleLogin }) => {
     e.preventDefault();
     onSubmit({ email, username, password });
   };
+  const handleProfileClick = () => {
+    // Navigate to ProfilePage
+    ReactDOM.render(<ProfilePage />, document.getElementById('root'));
+  };
+  const isFormValid = email && username && password;
 
   return (
     <div className="sign-up-container">
@@ -56,17 +66,17 @@ const SignUp = ({ onSubmit, onToggleLogin }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <label className="form-label">Email:</label>
-          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="form-input" />
+          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="form-input" required />
         </div>
         <div>
           <label className="form-label">Username:</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="form-input" />
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="form-input" required />
         </div>
         <div>
           <label className="form-label">Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-input" />
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-input" required />
         </div>
-        <button type="submit" className="btn">Sign Up</button>
+        <button type="submit" disabled={!isFormValid} onClick={handleProfileClick} className="btn">Sign Up</button>
         <button onClick={onToggleLogin} className="btn btn-transparent">Log In</button>
       </form>
     </div>
@@ -78,6 +88,7 @@ const SignUp = ({ onSubmit, onToggleLogin }) => {
  
 const App = () => { 
   const [isLogin, setIsLogin] = useState(true); 
+  
  
   const handleLogin = (userData) => { 
     console.log('Logging in with:', userData); 
@@ -107,12 +118,10 @@ const App = () => {
       {isLogin ? (
         <>
           <Login onSubmit={handleLogin} onToggleSignUp={handleToggleSignUp} />
-          <button onClick={handleProfileClick}>Go to Profile</button>
         </>
       ) : (
         <>
-          <SignUp onSubmit={handleSignUp} onToggleLogin={handleToggleLogin} />
-          <button onClick={handleProfileClick}>Go to Profile</button>
+          <SignUp onSubmit={handleSignUp} onToggleLogin={handleToggleLogin} />         
         </>
       )}
     </div>
