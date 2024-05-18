@@ -3,9 +3,9 @@ import './chat.css';
 
 const ChatComponent = () => {
   const [chats, setChats] = useState([
-    { id: 1, name: 'Alice', messages: [] },
-    { id: 2, name: 'Bob', messages: [] },
-    { id: 3, name: 'Charlie', messages: [] },
+    { id: 1, name: 'Alice', messages: [], profilePic: '/images/user.jpg' },
+    { id: 2, name: 'Bob', messages: [], profilePic: '/images/user.jpg' },
+    { id: 3, name: 'Charlie', messages: [], profilePic: '/images/user.jpg' },
   ]);
 
   const [selectedChat, setSelectedChat] = useState(null);
@@ -59,6 +59,7 @@ const ChatComponent = () => {
               onClick={() => handleChatSelection(chat)}
               className={selectedChat && selectedChat.id === chat.id ? 'selected-chat-item' : 'chat-item'}
             >
+              <img src={chat.profilePic} alt={`${chat.name}'s profile`} className="chat-profile-pic" />
               {chat.name}
             </li>
           ))}

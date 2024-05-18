@@ -3,11 +3,13 @@ import './ProfilePage.css'; // Import CSS file
 import ReactDOM from 'react-dom';
 import ChatComponent from './ChatComponent';
 
-const ProfilePage = ({ name: initialName, email: initialEmail }) => {
+const ProfilePage = ({ name: initialName, email: initialEmail, Hobby: initialHobby }) => {
   // Initialize state variables with initialName and initialEmail
   const [name, setName] = useState(initialName || 'John Doe');
   const [email, setEmail] = useState(initialEmail || 'john.doe@example.com');
   const [bio, setBio] = useState('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+  const [Hobby, setHobby] = useState(initialHobby|| 'Worker');
+  const [profilePic, setProfilePic] = useState('/images/user.jpg'); // Update path to image
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,9 +22,12 @@ const ProfilePage = ({ name: initialName, email: initialEmail }) => {
 
   return (
     <div>
-      <header className="header">HOBBYS</header>
+      <header className="header">HOBBIES</header>
       <div className="profile-container">
         <h2>Profile</h2>
+        <div className="profile-picture-container">
+          <img src={profilePic} alt="Profile" className="profile-picture" />
+        </div>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>
@@ -47,7 +52,14 @@ const ProfilePage = ({ name: initialName, email: initialEmail }) => {
               onChange={(e) => setBio(e.target.value)}
             />
           </div>
-          <button type="submit">Save</button>
+          <div>
+            <label>Hobby:</label>
+            <input
+              type="Hobby"
+              value={Hobby}
+              onChange={(e) => setHobby(e.target.value)}
+            />
+          </div>
         </form>
         <button onClick={handleChatButtonClick}>Go to Chat</button>
       </div>

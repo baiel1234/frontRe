@@ -1,9 +1,9 @@
-body{
+body {
   background: #add8e6;
 }
 /* ProfilePage.css */
 .header {
-  background: linear-gradient(#69C6FB,#0390DF);;
+  background: linear-gradient(#69C6FB, #0390DF);
   color: #fff;
   padding: 20px;
   text-align: left;
@@ -21,6 +21,19 @@ body{
   text-align: center;
   color: #3b5998;
   margin-bottom: 20px;
+}
+
+.profile-picture-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .profile-container form {
@@ -41,6 +54,7 @@ body{
 
 .profile-container input[type="text"],
 .profile-container input[type="email"],
+.profile-container input[type="Hobby"],
 .profile-container textarea {
   width: 100%;
   padding: 10px;
@@ -63,6 +77,8 @@ body{
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  width: 150px;
+  margin-top: 10px;
 }
 
 .profile-container button[type="submit"]:hover,
